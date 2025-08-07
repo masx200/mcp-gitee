@@ -16,7 +16,6 @@ import (
 	"gitee.com/oschina/mcp-gitee/operations/users"
 	"gitee.com/oschina/mcp-gitee/utils"
 	"github.com/mark3labs/mcp-go/mcp"
-
 	"github.com/mark3labs/mcp-go/server"
 )
 
@@ -164,7 +163,19 @@ func run(transport, addr string) error {
 			return err
 		}
 	case "sse":
-		srv := server.NewSSEServer(s, server.WithBaseURL(addr))
+		srv := server.NewSSEServer(s, server.WithBaseURL(addr),
+/* 为SSE服务器添加Bearer token认证支持
+
+在SSE服务器中添加上下文处理函数，从请求头中提取Bearer token并存入上下文 */
+			server.WithSSEContextFunc(func(ctx context.Context, r *http.Request) context.Context {
+				auth := r.Header.Get("Authorization")
+				if len(auth) > 7 && auth[:7] == "Bearer " {
+					token := auth[7:]
+					ctx = context.WithValue(ctx, "access_token", token)
+				}
+				return ctx
+			}),
+		)
 		log.Printf("SSE server listening on %s", addr)
 		if err := srv.Start(addr); err != nil {
 			if err == context.Canceled {
