@@ -3,8 +3,8 @@ package users
 import (
 	"context"
 
-	"gitee.com/oschina/mcp-gitee/operations/types"
-	"gitee.com/oschina/mcp-gitee/utils"
+	"gitee.com/masx200/mcp-gitee/operations/types"
+	"gitee.com/masx200/mcp-gitee/utils"
 	"github.com/mark3labs/mcp-go/mcp"
 )
 

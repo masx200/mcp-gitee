@@ -16,9 +16,9 @@ Gitee MCP Server is a Model Context Protocol (MCP) server implementation for Git
 <summary><b>Practical scenario: Obtain Issue from the repository, implement and create a Pull Request</b></summary>
 
 1. Get repository Issues
-![get_repo_issues](./docs/images/get_repo_issues.jpg)
+   ![get_repo_issues](./docs/images/get_repo_issues.jpg)
 2. Implement coding & create Pull Request based on Issue details
-![implement_issue](./docs/images/implement_issue.jpg)
+   ![implement_issue](./docs/images/implement_issue.jpg)
 3. Comment & Close Issue
 ![comment_and_close_issue](./docs/images/comment_and_close_issue.jpg)
 </details>
@@ -33,8 +33,9 @@ Gitee MCP Server is a Model Context Protocol (MCP) server implementation for Git
 ### Building from Source
 
 1. Clone the repository:
+
    ```bash
-   git clone https://gitee.com/oschina/mcp-gitee.git
+   git clone https://gitee.com/masx200/mcp-gitee.git
    cd mcp-gitee
    ```
 
@@ -45,9 +46,10 @@ Gitee MCP Server is a Model Context Protocol (MCP) server implementation for Git
    Move ./bin/mcp-gitee PATH env
 
 ### Use go install
-   ```bash
-   go install gitee.com/oschina/mcp-gitee@latest
-   ```
+
+```bash
+go install gitee.com/masx200/mcp-gitee@latest
+```
 
 ## Usage
 
@@ -58,6 +60,7 @@ mcp-gitee --version
 ```
 
 ## MCP Hosts Configuration
+
 <div align="center">
   <a href="docs/install/claude.md" title="Claude"><img src="docs/install/logos/Claude.png" width=80 height=80></a>
   <a href="docs/install/cursor.md" title="Cursor"><img src="docs/install/logos/Cursor.png" width=80 height=80></a>
@@ -67,7 +70,9 @@ mcp-gitee --version
 </div>
 
 config example: [Click to view more application configuration](./docs/install/)
+
 - Connect to the official remote mcp-gitee server (no installation required)
+
 ```json
 {
   "mcpServers": {
@@ -82,15 +87,13 @@ config example: [Click to view more application configuration](./docs/install/)
 ```
 
 - npx
+
 ```json
 {
   "mcpServers": {
     "gitee": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@gitee/mcp-gitee@latest"
-      ],
+      "args": ["-y", "@gitee/mcp-gitee@latest"],
       "env": {
         "GITEE_API_BASE": "https://gitee.com/api/v5",
         "GITEE_ACCESS_TOKEN": "<your personal access token>"
@@ -99,7 +102,9 @@ config example: [Click to view more application configuration](./docs/install/)
   }
 }
 ```
+
 - executable
+
 ```json
 {
   "mcpServers": {
@@ -138,6 +143,7 @@ You can also configure the server using environment variables:
 Toolset management supports two modes:
 
 1. Enable specified tools (whitelist mode):
+
    - Use `--enabled-toolsets` parameter or `ENABLED_TOOLSETS` environment variable
    - Specify after, only listed tools will be enabled, others will be disabled
    - Example: `--enabled-toolsets="list_user_repos,get_file_content"`
@@ -148,6 +154,7 @@ Toolset management supports two modes:
    - Example: `--disabled-toolsets="list_user_repos,get_file_content"`
 
 Note:
+
 - If both `enabled-toolsets` and `disabled-toolsets` are specified, `enabled-toolsets` takes precedence
 - Tool names are case-sensitive
 
@@ -159,34 +166,34 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 The server provides various tools for interacting with Gitee:
 
-| Tool                                | Category | Description |
-|-------------------------------------|----------|-------------|
-| **list_user_repos**                 | Repository | List user authorized repositories |
-| **get_file_content**                | Repository | Get the content of a file in a repository |
-| **create_user_repo**                | Repository | Create a user repository |
-| **create_org_repo**                 | Repository | Create an organization repository |
-| **create_enter_repo**               | Repository | Create an enterprise repository |
-| **fork_repository**                 | Repository | Fork a repository |
-| **create_release**                  | Repository | Create a release for a repository |
-| **list_releases**                   | Repository | List repository releases |
-| **search_open_source_repositories** | Repository | Search open source repositories on Gitee |
-| **list_repo_pulls**                 | Pull Request | List pull requests in a repository |
-| **merge_pull**                      | Pull Request | Merge a pull request |
-| **create_pull**                     | Pull Request | Create a pull request |
-| **update_pull**                     | Pull Request | Update a pull request |
-| **get_pull_detail**                 | Pull Request | Get details of a pull request |
-| **comment_pull**                    | Pull Request | Comment on a pull request |
-| **list_pull_comments**              | Pull Request | List all comments for a pull request |
-| **get_diff_files**                  | Pull Request | Get a pull request diff files |
-| **create_issue**                    | Issue | Create an issue |
-| **update_issue**                    | Issue | Update an issue |
-| **get_repo_issue_detail**           | Issue | Get details of a repository issue |
-| **list_repo_issues**                | Issue | List repository issues |
-| **comment_issue**                   | Issue | Comment on an issue |
-| **list_issue_comments**             | Issue | List comments on an issue |
-| **get_user_info**                   | User | Get current authenticated user information |
-| **search_users**                    | User | Search for users |
-| **list_user_notifications**         | Notification | List user notifications |
+| Tool                                | Category     | Description                                |
+| ----------------------------------- | ------------ | ------------------------------------------ |
+| **list_user_repos**                 | Repository   | List user authorized repositories          |
+| **get_file_content**                | Repository   | Get the content of a file in a repository  |
+| **create_user_repo**                | Repository   | Create a user repository                   |
+| **create_org_repo**                 | Repository   | Create an organization repository          |
+| **create_enter_repo**               | Repository   | Create an enterprise repository            |
+| **fork_repository**                 | Repository   | Fork a repository                          |
+| **create_release**                  | Repository   | Create a release for a repository          |
+| **list_releases**                   | Repository   | List repository releases                   |
+| **search_open_source_repositories** | Repository   | Search open source repositories on Gitee   |
+| **list_repo_pulls**                 | Pull Request | List pull requests in a repository         |
+| **merge_pull**                      | Pull Request | Merge a pull request                       |
+| **create_pull**                     | Pull Request | Create a pull request                      |
+| **update_pull**                     | Pull Request | Update a pull request                      |
+| **get_pull_detail**                 | Pull Request | Get details of a pull request              |
+| **comment_pull**                    | Pull Request | Comment on a pull request                  |
+| **list_pull_comments**              | Pull Request | List all comments for a pull request       |
+| **get_diff_files**                  | Pull Request | Get a pull request diff files              |
+| **create_issue**                    | Issue        | Create an issue                            |
+| **update_issue**                    | Issue        | Update an issue                            |
+| **get_repo_issue_detail**           | Issue        | Get details of a repository issue          |
+| **list_repo_issues**                | Issue        | List repository issues                     |
+| **comment_issue**                   | Issue        | Comment on an issue                        |
+| **list_issue_comments**             | Issue        | List comments on an issue                  |
+| **get_user_info**                   | User         | Get current authenticated user information |
+| **search_users**                    | User         | Search for users                           |
+| **list_user_notifications**         | Notification | List user notifications                    |
 
 ## Contribution
 

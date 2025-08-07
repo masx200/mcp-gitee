@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"gitee.com/oschina/mcp-gitee/utils"
+	"gitee.com/masx200/mcp-gitee/utils"
 
 	"github.com/mark3labs/mcp-go/mcp"
 )

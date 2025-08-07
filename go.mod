@@ -1,4 +1,4 @@
-module gitee.com/oschina/mcp-gitee
+module gitee.com/masx200/mcp-gitee
 
 go 1.23.0
 

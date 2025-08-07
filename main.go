@@ -9,12 +9,12 @@ import (
 	"os"
 	"strings"
 
-	"gitee.com/oschina/mcp-gitee/operations/issues"
-	"gitee.com/oschina/mcp-gitee/operations/notifications"
-	"gitee.com/oschina/mcp-gitee/operations/pulls"
-	"gitee.com/oschina/mcp-gitee/operations/repository"
-	"gitee.com/oschina/mcp-gitee/operations/users"
-	"gitee.com/oschina/mcp-gitee/utils"
+	"gitee.com/masx200/mcp-gitee/operations/issues"
+	"gitee.com/masx200/mcp-gitee/operations/notifications"
+	"gitee.com/masx200/mcp-gitee/operations/pulls"
+	"gitee.com/masx200/mcp-gitee/operations/repository"
+	"gitee.com/masx200/mcp-gitee/operations/users"
+	"gitee.com/masx200/mcp-gitee/utils"
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
 )
@@ -164,9 +164,9 @@ func run(transport, addr string) error {
 		}
 	case "sse":
 		srv := server.NewSSEServer(s, server.WithBaseURL(addr),
-/* 为SSE服务器添加Bearer token认证支持
+			/* 为SSE服务器添加Bearer token认证支持
 
-在SSE服务器中添加上下文处理函数，从请求头中提取Bearer token并存入上下文 */
+			   在SSE服务器中添加上下文处理函数，从请求头中提取Bearer token并存入上下文 */
 			server.WithSSEContextFunc(func(ctx context.Context, r *http.Request) context.Context {
 				auth := r.Header.Get("Authorization")
 				if len(auth) > 7 && auth[:7] == "Bearer " {

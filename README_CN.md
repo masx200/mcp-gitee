@@ -16,9 +16,9 @@ Gitee MCP 服务器是一个用于 Gitee 的模型上下文协议（Model Contex
 <summary><b>实战场景：从仓库获取 Issue，实现并创建 Pull Request</b></summary>
 
 1. 获取当前仓库 Issues
-![get_repo_issues](./docs/images/get_repo_issues.jpg)
+   ![get_repo_issues](./docs/images/get_repo_issues.jpg)
 2. 根据 Issue 详情实现编码 & 创建 Pull Request
-![implement_issue](./docs/images/implement_issue.jpg)
+   ![implement_issue](./docs/images/implement_issue.jpg)
 3. 评论&关闭 Issue
 ![comment_and_close_issue](./docs/images/comment_and_close_issue.jpg)
 </details>
@@ -33,8 +33,9 @@ Gitee MCP 服务器是一个用于 Gitee 的模型上下文协议（Model Contex
 ### 从源代码构建
 
 1. 克隆仓库：
+
    ```bash
-   git clone https://gitee.com/oschina/mcp-gitee.git
+   git clone https://gitee.com/masx200/mcp-gitee.git
    cd mcp-gitee
    ```
 
@@ -43,11 +44,12 @@ Gitee MCP 服务器是一个用于 Gitee 的模型上下文协议（Model Contex
    make build
    ```
    将 ./bin/mcp-gitee 移动至系统环境变量
-   
+
 ### 使用 go install 安装
-   ```bash
-   go install gitee.com/oschina/mcp-gitee@latest
-   ```
+
+```bash
+go install gitee.com/masx200/mcp-gitee@latest
+```
 
 ## 使用方法
 
@@ -68,7 +70,9 @@ mcp-gitee --version
 </div>
 
 配置示例：[点击查看更多应用配置](./docs/install/)
+
 - 连接官方 remote mcp-gitee server（免安装）
+
 ```json
 {
   "mcpServers": {
@@ -83,15 +87,13 @@ mcp-gitee --version
 ```
 
 - npx 启动
+
 ```json
 {
   "mcpServers": {
     "gitee": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@gitee/mcp-gitee@latest"
-      ],
+      "args": ["-y", "@gitee/mcp-gitee@latest"],
       "env": {
         "GITEE_API_BASE": "https://gitee.com/api/v5",
         "GITEE_ACCESS_TOKEN": "<your personal access token>"
@@ -100,7 +102,9 @@ mcp-gitee --version
   }
 }
 ```
+
 - 可执行文件启动
+
 ```json
 {
   "mcpServers": {
@@ -139,6 +143,7 @@ mcp-gitee --version
 工具集管理支持两种模式：
 
 1. 启用指定工具（白名单模式）：
+
    - 使用 `--enabled-toolsets` 参数或 `ENABLED_TOOLSETS` 环境变量
    - 指定后，只有列出的工具会被启用，其他工具都会被禁用
    - 例如：`--enabled-toolsets="update_enterprise_issue,list_enterprise_repositories"`
@@ -149,6 +154,7 @@ mcp-gitee --version
    - 例如：`--disabled-toolsets="update_enterprise_issue,list_enterprise_repositories"`
 
 注意：
+
 - 如果同时指定了 `enabled-toolsets` 和 `disabled-toolsets`，则 `enabled-toolsets` 优先
 - 工具名称区分大小写
 
@@ -160,34 +166,34 @@ mcp-gitee --version
 
 服务器提供了各种与 Gitee 交互的工具：
 
-| 工具                          | 类别           | 描述               |
-|-----------------------------|--------------|------------------|
-| **list_user_repos**         | 仓库           | 列出用户授权的仓库        |
-| **get_file_content**        | 仓库           | 获取仓库中文件的内容       |
-| **create_user_repo**        | 仓库           | 创建用户仓库           |
-| **create_org_repo**         | 仓库           | 创建组织仓库           |
-| **create_enter_repo**       | 仓库           | 创建企业仓库           |
-| **fork_repository**         | 仓库           | Fork 仓库          |
-| **create_release**          | 仓库           | 为仓库创建发行版         |
-| **list_releases**           | 仓库           | 列出仓库发行版          |
-| **search_open_source_repositories** | 仓库           | 搜索开源仓库           |
-| **list_repo_pulls**         | Pull Request | 列出仓库中的拉取请求       |
-| **merge_pull**              | Pull Request | 合并拉取请求           |
-| **create_pull**             | Pull Request | 创建拉取请求           |
-| **update_pull**             | Pull Request | 更新拉取请求           |
-| **get_pull_detail**         | Pull Request | 获取拉取请求的详细信息      |
-| **comment_pull**            | Pull Request | 评论拉取请求           |
-| **list_pull_comments**      | Pull Request | 列出拉取请求的所有评论      |
-| **get_diff_files**          | Pull Request | 获取拉取请求的差异文件      |
-| **create_issue**            | Issue        | 创建 Issue         |
-| **update_issue**            | Issue        | 更新 Issue         |
-| **get_repo_issue_detail**   | Issue        | 获取仓库 Issue 的详细信息 |
-| **list_repo_issues**        | Issue        | 列出仓库 Issue       |
-| **comment_issue**           | Issue        | 评论 Issue         |
-| **list_issue_comments**     | Issue        | 列出 Issue 的评论     |
-| **get_user_info**           | 用户           | 获取当前认证用户信息       |
-| **search_users**            | 用户           | 搜索用户             |
-| **list_user_notifications** | 通知           | 列出用户通知           |
+| 工具                                | 类别         | 描述                      |
+| ----------------------------------- | ------------ | ------------------------- |
+| **list_user_repos**                 | 仓库         | 列出用户授权的仓库        |
+| **get_file_content**                | 仓库         | 获取仓库中文件的内容      |
+| **create_user_repo**                | 仓库         | 创建用户仓库              |
+| **create_org_repo**                 | 仓库         | 创建组织仓库              |
+| **create_enter_repo**               | 仓库         | 创建企业仓库              |
+| **fork_repository**                 | 仓库         | Fork 仓库                 |
+| **create_release**                  | 仓库         | 为仓库创建发行版          |
+| **list_releases**                   | 仓库         | 列出仓库发行版            |
+| **search_open_source_repositories** | 仓库         | 搜索开源仓库              |
+| **list_repo_pulls**                 | Pull Request | 列出仓库中的拉取请求      |
+| **merge_pull**                      | Pull Request | 合并拉取请求              |
+| **create_pull**                     | Pull Request | 创建拉取请求              |
+| **update_pull**                     | Pull Request | 更新拉取请求              |
+| **get_pull_detail**                 | Pull Request | 获取拉取请求的详细信息    |
+| **comment_pull**                    | Pull Request | 评论拉取请求              |
+| **list_pull_comments**              | Pull Request | 列出拉取请求的所有评论    |
+| **get_diff_files**                  | Pull Request | 获取拉取请求的差异文件    |
+| **create_issue**                    | Issue        | 创建 Issue                |
+| **update_issue**                    | Issue        | 更新 Issue                |
+| **get_repo_issue_detail**           | Issue        | 获取仓库 Issue 的详细信息 |
+| **list_repo_issues**                | Issue        | 列出仓库 Issue            |
+| **comment_issue**                   | Issue        | 评论 Issue                |
+| **list_issue_comments**             | Issue        | 列出 Issue 的评论         |
+| **get_user_info**                   | 用户         | 获取当前认证用户信息      |
+| **search_users**                    | 用户         | 搜索用户                  |
+| **list_user_notifications**         | 通知         | 列出用户通知              |
 
 ## 贡献
 

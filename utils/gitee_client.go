@@ -14,7 +14,7 @@ import (
 	"runtime"
 	"strconv"
 
-	"gitee.com/oschina/mcp-gitee/operations/types"
+	"gitee.com/masx200/mcp-gitee/operations/types"
 
 	"github.com/mark3labs/mcp-go/mcp"
 )
